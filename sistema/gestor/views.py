@@ -6,3 +6,9 @@ from django.http import HttpResponse
 
 def inicio(request):
     return render(request, 'paginas/inicio.html')
+
+def soporte(request):
+    return render(request, 'paginas/soporte.html')
+
+def proyectos(request):
+    return render(request, 'proyectos/index.html')

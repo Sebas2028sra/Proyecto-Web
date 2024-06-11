@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block titulo %}Proyectos{% endblock %}
+
+{% block contenido %}
+    <h1>Listado de tareas</h1>
+    <p>Lista de proyectos/tareas del usuario</p>
+
+    <div class="card">
+        <div class="card-header"><a
+            name=""
+            id=""
+            class="btn btn-success"
+            href="#"
+            role="button"
+            >Agregar tarea</a
+        >
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Proyectos</h4>
+            
+            <div
+                class="table-responsive"
+            >
+                <table
+                    class="table table-primary"
+                >
+                    <thead>
+                        <tr>
+                            <th scope="col">Tarea</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Prioridad</th>
+                            <th scope="col">Fecha de entrega</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td scope="row">R1C1</td>
+                            <td><div class="dropdown open">
+                                <button
+                                    class="btn btn-info dropdown-toggle"
+                                    type="button"
+                                    id="triggerId"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    -
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="triggerId">
+                                    <button class="dropdown-item" href="#">No iniciado</button>
+                                    <button class="dropdown-item" href="#">En proceso</button>
+                                    <button class="dropdown-item" href="#">Finalizado</button>
+                                    <button class="dropdown-item" href="#">Pausado</button>
+                                    <button class="dropdown-item disabled" href="#">
+                                        Disabled action
+                                    </button>
+                                </div>
+                            </div>
+                            </td>
+                            <td><div class="dropdown open">
+                                <button
+                                    class="btn btn-info dropdown-toggle"
+                                    type="button"
+                                    id="triggerId"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    -
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="triggerId">
+                                    <button class="dropdown-item" href="#">Minima</button>
+                                    <button class="dropdown-item" href="#">Baja</button>
+                                    <button class="dropdown-item" href="#">Media</button>
+                                    <button class="dropdown-item" href="#">Alta</button>
+                                    <button class="dropdown-item" href="#">Critica</button>
+                                    <button class="dropdown-item disabled" href="#">
+                                        Disabled action
+                                    </button>
+                                </div>
+                            </div></td>
+                            <td>R1C4</td>
+                            <td><a
+                                name=""
+                                id=""
+                                class="btn btn-danger"
+                                href="#"
+                                role="button"
+                                >Eliminar</a
+                            >
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+{% endblock %}
