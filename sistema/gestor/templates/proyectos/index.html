@@ -35,8 +35,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for proyectos in proyectos %}
                         <tr class="">
-                            <td scope="row">R1C1</td>
+                            <td scope="row">{{ proyectos.tarea}}</td>
                             <td><div class="dropdown open">
                                 <button
                                     class="btn btn-info dropdown-toggle"
@@ -99,6 +100,7 @@
                                 >Eliminar</a>
                         </td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

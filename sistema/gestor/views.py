@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse    
+from .models import Proyecto
 
 # Create your views here.
 
@@ -11,4 +12,5 @@ def soporte(request):
     return render(request, 'paginas/soporte.html')
 
 def proyectos(request):
-    return render(request, 'proyectos/index.html')
+    proyectos = Proyecto.objects.all()
+    return render(request, 'proyectos/index.html', {'proyectos': proyectos})
