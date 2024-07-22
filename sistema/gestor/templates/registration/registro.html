@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}Registro{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h2>Registrarse</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+        <a href="{% url 'login' %}" class="btn btn-secondary">Iniciar Sesión</a>
+        <a href="{% url 'inicio' %}" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
