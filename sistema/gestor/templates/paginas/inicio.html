@@ -3,6 +3,18 @@
 {% block titulo %}Inicio{% endblock %}
 
 {% block contenido %}
-    <h1>Inicio</h1>
-    <p>Esta es la página de inicio</p>
+    <div
+        class="card border-primary"
+    >
+        <div class="card-body">
+            <h4 class="card-title text-center">Bienvenido a SpaceProject.com</h4>
+            <p class="card-subtitle text-center">SpaceProject.com es una plataforma diseñada para ayudarte a gestionar tus proyectos de manera eficiente. Ya sea que estés trabajando en un proyecto personal o en equipo, nuestra herramienta te proporciona todo lo necesario para mantener tus tareas organizadas y alcanzar tus objetivos.</p>
+            <p class="card-text"></p>
+            <p class="card-text"></p>
+            <p class="card-text text-align">Regístrate para comenzar a utilizar todas las funcionalidades de nuestro sistema y gestionar tus proyectos de forma personalizada.</p>
+            <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Iniciar Sesión</a>
+        
+        </div>
+    </div>
+    
 {% endblock %}

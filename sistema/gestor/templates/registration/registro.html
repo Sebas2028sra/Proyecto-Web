@@ -1,16 +1,28 @@
 {% extends "base.html" %}
 
-{% block titulo %}Registro{% endblock %}
+{% block titulo %}Registrarse{% endblock %}
 
 {% block contenido %}
-<div class="container">
-    <h2>Registrarse</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Registrarse</button>
-        <a href="{% url 'login' %}" class="btn btn-secondary">Iniciar Sesión</a>
-        <a href="{% url 'inicio' %}" class="btn btn-danger">Cancelar</a>
-    </form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Registrarse</h2>
+                    <form method="post" action="{% url 'registro' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                            <a href="{% url 'inicio' %}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'login' %}">¿Ya tienes una cuenta? Inicia sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
