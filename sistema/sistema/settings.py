@@ -127,3 +127,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/index/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Cambia esto por el servidor SMTP que uses
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'SpaceProyect.soporte@gmail.com'  # Cambia esto por tu correo electrónico
+EMAIL_HOST_PASSWORD = 'xxkp qbyx gfyb csht'      # Cambia esto por tu contraseña
+DEFAULT_FROM_EMAIL = 'SpaceProyect.soporte@gmail.com'  # Cambia esto por tu correo electrónico predeterminado
+SUPPORT_EMAIL = 'SpaceProyect.soporte@gmail.com'  # Cambia esto por tu correo de soporte
