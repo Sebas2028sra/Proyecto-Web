@@ -7,20 +7,24 @@
 
 <div class="container">
     <div class="card shadow-sm mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center bg-secondary text-white">
+        <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
             <h4 class="mb-0">Proyectos</h4>
-            <a href="{% url 'agregar_proyecto' %}" class="btn btn-light">Agregar tarea</a>
+            <div class="d-flex justify-content-center w-100">
+                <a href="{% url 'custom_estado' %}" class="btn btn-outline-light btn-sm me-2">Personalizar Estados</a>
+                <a href="{% url 'custom_prioridad' %}" class="btn btn-outline-light btn-sm">Personalizar Prioridades</a>
+            </div>
+            <a href="{% url 'agregar_proyecto' %}" class="btn btn-outline-light btn-sm">Agregar Tarea</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table id="example" class="table table-hover table-bordered">
-                    <thead class="table-info">
+                <table id="example" class="table table-hover table-bordered align-middle">
+                    <thead class="table-light">
                         <tr>
                             <th scope="col">Tarea</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Prioridad</th>
-                            <th scope="col">Fecha de vencimiento</th>
-                            <th scope="col">Acciones</th>
+                            <th scope="col">Fecha de Vencimiento</th>
+                            <th scope="col" class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,8 +34,8 @@
                             <td>{{ proyecto.id_estado.descripcion_estado }}</td>
                             <td>{{ proyecto.id_prioridad.descripcion_prioridad }}</td>
                             <td>{{ proyecto.fecha_vencimiento }}</td>
-                            <td>
-                                <a href="{% url 'actualizar_proyecto' proyecto.id_proyecto %}" class="btn btn-primary btn-sm">Editar</a>
+                            <td class="text-center">
+                                <a href="{% url 'actualizar_proyecto' proyecto.id_proyecto %}" class="btn btn-primary btn-sm me-1">Editar</a>
                                 <a href="{% url 'eliminar_proyecto' proyecto.id_proyecto %}" class="btn btn-danger btn-sm">Eliminar</a>
                             </td>
                         </tr>

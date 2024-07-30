@@ -5,7 +5,7 @@
 {% block contenido %}
 <div class="container">
     <h2>Editar Proyecto</h2>
-    <form method="POST" action="{% url 'actualizar_proyecto' proyecto.id_proyecto %}">
+    <form method="POST">
         {% csrf_token %}
         <div class="mb-3">
             <label for="nombre_proyecto" class="form-label">Nombre del Proyecto</label>
@@ -15,7 +15,7 @@
             <label for="id_estado" class="form-label">Estado</label>
             <select class="form-select" id="id_estado" name="id_estado" required>
                 {% for estado in estados %}
-                <option value="{{ estado.id_estado }}" {% if proyecto.id_estado.id_estado == estado.id_estado %}selected{% endif %}>{{ estado.descripcion_estado }}</option>
+                <option value="{{ estado.id_estado }}" {% if estado.id_estado == proyecto.id_estado.id_estado %}selected{% endif %}>{{ estado.descripcion_estado }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -23,15 +23,15 @@
             <label for="id_prioridad" class="form-label">Prioridad</label>
             <select class="form-select" id="id_prioridad" name="id_prioridad" required>
                 {% for prioridad in prioridades %}
-                <option value="{{ prioridad.id_prioridad }}" {% if proyecto.id_prioridad.id_prioridad == prioridad.id_prioridad %}selected{% endif %}>{{ prioridad.descripcion_prioridad }}</option>
+                <option value="{{ prioridad.id_prioridad }}" {% if prioridad.id_prioridad == proyecto.id_prioridad.id_prioridad %}selected{% endif %}>{{ prioridad.descripcion_prioridad }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="mb-3">
             <label for="fecha_vencimiento" class="form-label">Fecha de Vencimiento</label>
-            <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" value="{{ proyecto.fecha_vencimiento }}" required>
+            <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" value="{{ proyecto.fecha_vencimiento|date:'Y-m-d' }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>

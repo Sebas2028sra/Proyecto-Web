@@ -15,7 +15,7 @@ class Usuario(models.Model):
 class Estado(models.Model):
     id_estado = models.AutoField(primary_key=True, verbose_name='ID Estado')
     descripcion_estado = models.CharField(max_length=50)
-    id_usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    id_usuario = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.descripcion_estado
@@ -23,7 +23,7 @@ class Estado(models.Model):
 class Prioridad(models.Model):
     id_prioridad = models.AutoField(primary_key=True, verbose_name='ID Prioridad')
     descripcion_prioridad = models.CharField(max_length=50)
-    id_usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    id_usuario = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.descripcion_prioridad

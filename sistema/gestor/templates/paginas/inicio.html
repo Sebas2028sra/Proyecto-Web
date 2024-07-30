@@ -3,18 +3,36 @@
 {% block titulo %}Inicio{% endblock %}
 
 {% block contenido %}
-    <div
-        class="card border-primary"
-    >
-        <div class="card-body">
-            <h4 class="card-title text-center">Bienvenido a SpaceProject.com</h4>
-            <p class="card-subtitle text-center">SpaceProject.com es una plataforma diseñada para ayudarte a gestionar tus proyectos de manera eficiente. Ya sea que estés trabajando en un proyecto personal o en equipo, nuestra herramienta te proporciona todo lo necesario para mantener tus tareas organizadas y alcanzar tus objetivos.</p>
-            <p class="card-text"></p>
-            <p class="card-text"></p>
-            <p class="card-text text-align">Regístrate para comenzar a utilizar todas las funcionalidades de nuestro sistema y gestionar tus proyectos de forma personalizada.</p>
-            <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Iniciar Sesión</a>
-        
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Bienvenido a SpaceProject.com</h1>
+    <p class="lead text-center">
+        SpaceProject.com es tu plataforma integral para la gestión de proyectos. Ya sea que estés trabajando en proyectos personales, académicos, o en equipos profesionales, aquí encontrarás todas las herramientas que necesitas para organizar tus tareas y alcanzar tus objetivos de manera eficiente.
+    </p>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Organiza tus Tareas</h3>
+            <p>
+                Mantén tus tareas bajo control con nuestra funcionalidad de gestión de proyectos. Puedes crear, actualizar y priorizar tareas de acuerdo a tus necesidades. Además, te ofrecemos la posibilidad de personalizar estados y prioridades, adaptando el sistema a tu flujo de trabajo único.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h3>Características Destacadas</h3>
+            <ul>
+                <li>Gestión de tareas y proyectos personalizada</li>
+                <li>Personalización de estados y prioridades para adaptarse a tus necesidades</li>
+                <li>Interfaz intuitiva y fácil de usar</li>
+                <li>Soporte para proyectos individuales</li>
+            </ul>
+            <h3>Comienza Ahora</h3>
+            <p>
+                No esperes más para llevar tu gestión de proyectos al siguiente nivel. Con SpaceProject.com, podrás enfocarte en lo que realmente importa: completar tus proyectos con éxito. 
+                <strong>Regístrate hoy y descubre cómo nuestra plataforma puede ayudarte a alcanzar tus metas.</strong>
+            </p>
         </div>
     </div>
-    
+    <div class="text-center mt-4">
+        <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Iniciar Sesión</a>
+    </div>
+</div>
 {% endblock %}

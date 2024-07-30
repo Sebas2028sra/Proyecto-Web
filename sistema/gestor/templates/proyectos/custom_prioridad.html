@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %}Personalizar Prioridad{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h2>Personalizar Prioridad</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="descripcion_prioridad" class="form-label">Descripción de la Prioridad</label>
+            <input type="text" class="form-control" id="descripcion_prioridad" name="descripcion_prioridad" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Prioridad</button>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+    <h3 class="mt-5">Prioridades Personalizadas</h3>
+    <ul class="list-group">
+        {% for prioridad in prioridades_personalizadas %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ prioridad.descripcion_prioridad }}
+            <form method="POST" action="{% url 'eliminar_prioridad' prioridad.id_prioridad %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

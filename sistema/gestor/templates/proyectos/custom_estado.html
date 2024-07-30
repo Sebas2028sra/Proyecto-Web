@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %}Personalizar Estado{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h2>Personalizar Estado</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="descripcion_estado" class="form-label">Descripción del Estado</label>
+            <input type="text" class="form-control" id="descripcion_estado" name="descripcion_estado" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Estado</button>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+    <h3 class="mt-5">Estados Personalizados</h3>
+    <ul class="list-group">
+        {% for estado in estados_personalizados %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ estado.descripcion_estado }}
+            <form method="POST" action="{% url 'eliminar_estado' estado.id_estado %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
