@@ -6,6 +6,12 @@ from django.contrib.auth.models import User
 from .forms import RegistroForm
 from .models import Estado, Prioridad, Proyecto
 from django.db.models import Q
+from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+from django.contrib import messages
 
 def registro(request):
     if request.method == 'POST':
@@ -80,6 +86,17 @@ def agregar_proyecto(request):
         estado = get_object_or_404(Estado, Q(id_estado=id_estado) & (Q(id_usuario=usuario) | Q(id_usuario=None)))
         prioridad = get_object_or_404(Prioridad, Q(id_prioridad=id_prioridad) & (Q(id_usuario=usuario) | Q(id_usuario=None)))
 
+        # Validar el correo electrónico del responsable si no está vacío
+        if responsable:
+            try:
+                validate_email(responsable)
+            except ValidationError:
+                messages.error(request, 'Por favor, agregue una dirección de correo electrónico válida o no agregue ningún valor al campo.')
+                return render(request, 'proyectos/agregar.html', {
+                    'estados': Estado.objects.filter(Q(id_usuario=request.user) | Q(id_usuario=None)),
+                    'prioridades': Prioridad.objects.filter(Q(id_usuario=request.user) | Q(id_usuario=None)),
+                })
+
         nuevo_proyecto = Proyecto(
             nombre_proyecto=nombre_proyecto,
             responsable=responsable,
@@ -88,7 +105,23 @@ def agregar_proyecto(request):
             fecha_vencimiento=fecha_vencimiento,
             id_usuario=usuario
         )
+
         nuevo_proyecto.save()
+
+        # Enviar correo electrónico al responsable si se ingresó un correo válido
+        if responsable:
+            send_mail(
+                'Nuevo Proyecto Asignado',
+                f'Hola, {responsable}. Se te ha asignado el proyecto "{nombre_proyecto}".\n\n'
+                f'Detalles del proyecto:\n'
+                f'- Estado: {estado.descripcion_estado}\n'
+                f'- Prioridad: {prioridad.descripcion_prioridad}\n'
+                f'- Fecha de Vencimiento: {fecha_vencimiento}\n',
+                settings.DEFAULT_FROM_EMAIL,
+                [responsable],
+                fail_silently=False,
+            )
+
         return redirect('index')
     else:
         estados = Estado.objects.filter(Q(id_usuario=request.user) | Q(id_usuario=None))

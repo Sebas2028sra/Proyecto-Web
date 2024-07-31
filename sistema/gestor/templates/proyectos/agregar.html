@@ -5,6 +5,18 @@
 {% block contenido %}
 <div class="container">
     <h2>Agregar Proyecto</h2>
+
+    <!-- Bloque para mostrar mensajes de error -->
+    {% if messages %}
+      <div>
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
     <form method="POST">
         {% csrf_token %}
         <div class="mb-3">
@@ -14,6 +26,9 @@
         <div class="mb-3">
             <label for="responsable" class="form-label">Responsable</label>
             <input type="text" class="form-control" id="responsable" name="responsable">
+            <small class="form-text text-muted">
+                Por favor ingresa un correo electrónico valido para notificarle sobre el proyecto, o si no tienes a ningún responsable para este proyecto, puedes dejar el campo en blanco.
+            </small>
         </div>
         <div class="mb-3">
             <label for="id_estado" class="form-label">Estado</label>
