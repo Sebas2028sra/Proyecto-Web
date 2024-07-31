@@ -135,5 +135,6 @@ EMAIL_HOST = 'smtp.gmail.com'  # Cambia esto por el servidor SMTP que uses
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'SpaceProyect.soporte@gmail.com'  # Cambia esto por tu correo electrónico
+EMAIL_HOST_PASSWORD = 'lmxq wgas ggwh mdog'
 DEFAULT_FROM_EMAIL = 'SpaceProyect.soporte@gmail.com'  # Cambia esto por tu correo electrónico predeterminado
 SUPPORT_EMAIL = 'SpaceProyect.soporte@gmail.com'  # Cambia esto por tu correo de soporte

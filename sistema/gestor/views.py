@@ -71,6 +71,7 @@ def listado_proyectos(request):
 def agregar_proyecto(request):
     if request.method == 'POST':
         nombre_proyecto = request.POST['nombre_proyecto']
+        responsable = request.POST['responsable']
         id_estado = request.POST['id_estado']
         id_prioridad = request.POST['id_prioridad']
         fecha_vencimiento = request.POST['fecha_vencimiento']
@@ -81,6 +82,7 @@ def agregar_proyecto(request):
 
         nuevo_proyecto = Proyecto(
             nombre_proyecto=nombre_proyecto,
+            responsable=responsable,
             id_estado=estado,
             id_prioridad=prioridad,
             fecha_vencimiento=fecha_vencimiento,
@@ -99,6 +101,7 @@ def actualizar_proyecto(request, id):
     proyecto = get_object_or_404(Proyecto, id_proyecto=id, id_usuario=request.user)
     if request.method == 'POST':
         proyecto.nombre_proyecto = request.POST['nombre_proyecto']
+        proyecto.responsable = request.POST['responsable']
         proyecto.id_estado = get_object_or_404(Estado, Q(id_estado=request.POST['id_estado']) & (Q(id_usuario=request.user) | Q(id_usuario=None)))
         proyecto.id_prioridad = get_object_or_404(Prioridad, Q(id_prioridad=request.POST['id_prioridad']) & (Q(id_usuario=request.user) | Q(id_usuario=None)))
         proyecto.fecha_vencimiento = request.POST['fecha_vencimiento']
@@ -172,7 +175,7 @@ def soporte(request):
             asunto, 
             mensaje_completo, 
             settings.DEFAULT_FROM_EMAIL, 
-            [settings.SUPPORT_EMAIL],  # Aquí va tu correo electrónico de soporte
+            [settings.SUPPORT_EMAIL],
             fail_silently=False,
         )
         return render(request, 'paginas/soporte.html', {'mensaje_enviado': True})

@@ -12,6 +12,10 @@
             <input type="text" class="form-control" id="nombre_proyecto" name="nombre_proyecto" value="{{ proyecto.nombre_proyecto }}" required>
         </div>
         <div class="mb-3">
+            <label for="responsable" class="form-label">Responsable</label>
+            <input type="text" class="form-control" id="responsable" name="responsable" value="{{ proyecto.responsable }}">
+        </div>
+        <div class="mb-3">
             <label for="id_estado" class="form-label">Estado</label>
             <select class="form-select" id="id_estado" name="id_estado" required>
                 {% for estado in estados %}

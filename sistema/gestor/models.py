@@ -31,6 +31,7 @@ class Prioridad(models.Model):
 class Proyecto(models.Model):
     id_proyecto = models.AutoField(primary_key=True, verbose_name='ID Proyecto')
     nombre_proyecto = models.CharField(max_length=255)
+    responsable = models.CharField(max_length=255, null=True, blank=True, default="")
     id_estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
     id_prioridad = models.ForeignKey(Prioridad, on_delete=models.CASCADE)
     fecha_vencimiento = models.DateField(default=timezone.now() + timedelta(days=30))

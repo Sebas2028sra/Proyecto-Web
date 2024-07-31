@@ -21,6 +21,7 @@
                     <thead class="table-light">
                         <tr>
                             <th scope="col">Tarea</th>
+                            <th scope="col">Responsable</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Prioridad</th>
                             <th scope="col">Fecha de Vencimiento</th>
@@ -31,6 +32,7 @@
                         {% for proyecto in proyectos %}
                         <tr>
                             <td>{{ proyecto.nombre_proyecto }}</td>
+                            <td>{{ proyecto.responsable }}</td>
                             <td>{{ proyecto.id_estado.descripcion_estado }}</td>
                             <td>{{ proyecto.id_prioridad.descripcion_prioridad }}</td>
                             <td>{{ proyecto.fecha_vencimiento }}</td>
