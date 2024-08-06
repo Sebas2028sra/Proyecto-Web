@@ -9,11 +9,13 @@
     <style>
         body {
             display: flex;
-            min-height: 100vh;
             flex-direction: column;
+            min-height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
         }
+
+        /* Barra de navegación superior */
         .navbar-top {
             width: 100%;
             background-color: #2b4661;
@@ -40,6 +42,8 @@
             background-color: #495057;
             color: white;
         }
+
+        /* Barra lateral */
         .sidebar {
             width: 200px;
             background-color: #e0e0e0;
@@ -65,16 +69,15 @@
             padding: 10px;
             border-radius: 10px;
             text-decoration: none;
-            text-shadow: 1px 1px 2px #2b4661(126, 185, 245);
+            text-shadow: 1px 1px 2px rgba(43, 70, 97, 0.5);
             text-align: center;
         }
         .sidebar .nav-link:hover {
             background-color: #9fa0a1;
             color: #333333;
         }
-        .sidebar .nav-support {
-            margin-top: auto;
-        }
+
+        /* Contenido principal */
         .content {
             margin-left: 200px;
             margin-top: 60px; 
@@ -85,8 +88,8 @@
 </head>
 <body>
     <div class="navbar-top">
-        <div>
-            <span>SpaceProject.com</span>
+        <div class="navbar-center">
+            SpaceProject.com
         </div>
         <div>
             <ul class="nav">
@@ -108,6 +111,7 @@
             </ul>
         </div>
     </div>
+
     <div class="sidebar">
         <ul class="nav flex-column">
             <li class="nav-item">
@@ -116,16 +120,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'index' %}">Proyectos</a>
             </li>
-        </ul>
-        <ul class="nav flex-column nav-support">
+            <div class="flex-grow-1"></div>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'soporte' %}">Soporte</a>
             </li>
         </ul>
     </div>
+
     <div class="content">
         {% block contenido %}{% endblock %}
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
