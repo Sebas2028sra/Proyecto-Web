@@ -50,6 +50,10 @@
             <label for="fecha_vencimiento" class="form-label">Fecha de Vencimiento</label>
             <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>
         </div>
+        <div>
+            <label for="porcentaje">Porcentaje de progreso:</label>
+            <input type="number" id="porcentaje" name="porcentaje" min="0" max="100" value="0">
+        </div>
         <button type="submit" class="btn btn-primary">Agregar Proyecto</button>
         <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
     </form>

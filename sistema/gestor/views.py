@@ -81,6 +81,7 @@ def agregar_proyecto(request):
         id_estado = request.POST['id_estado']
         id_prioridad = request.POST['id_prioridad']
         fecha_vencimiento = request.POST['fecha_vencimiento']
+        porcentaje = int(request.POST['porcentaje'])  # Obtenemos el porcentaje
         usuario = request.user
 
         estado = get_object_or_404(Estado, Q(id_estado=id_estado) & (Q(id_usuario=usuario) | Q(id_usuario=None)))
@@ -103,6 +104,7 @@ def agregar_proyecto(request):
             id_estado=estado,
             id_prioridad=prioridad,
             fecha_vencimiento=fecha_vencimiento,
+            porcentaje=porcentaje,  # Guardamos el porcentaje
             id_usuario=usuario
         )
 
@@ -138,6 +140,7 @@ def actualizar_proyecto(request, id):
         proyecto.id_estado = get_object_or_404(Estado, Q(id_estado=request.POST['id_estado']) & (Q(id_usuario=request.user) | Q(id_usuario=None)))
         proyecto.id_prioridad = get_object_or_404(Prioridad, Q(id_prioridad=request.POST['id_prioridad']) & (Q(id_usuario=request.user) | Q(id_usuario=None)))
         proyecto.fecha_vencimiento = request.POST['fecha_vencimiento']
+        proyecto.porcentaje = int(request.POST['porcentaje'])  # Actualizamos el porcentaje
         proyecto.save()
         return redirect('index')
     else:

@@ -36,6 +36,7 @@ class Proyecto(models.Model):
     id_prioridad = models.ForeignKey(Prioridad, on_delete=models.CASCADE)
     fecha_vencimiento = models.DateField(default=timezone.now() + timedelta(days=30))
     id_usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    porcentaje = models.PositiveIntegerField(default=0)  # Nuevo campo de porcentaje
 
     def __str__(self):
         return self.nombre_proyecto
