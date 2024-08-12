@@ -13,12 +13,18 @@
             min-height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
+            background-image: url("{% static 'imagenes/background index4.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
         }
-
+    
         /* Barra de navegación superior */
         .navbar-top {
             width: 100%;
-            background-color: #2b4661;
+            background: -webkit-linear-gradient(180deg, #3726a7,#43ABD3,#464646, #242329);
             color: white;
             display: flex;
             justify-content: space-between;
@@ -42,11 +48,11 @@
             background-color: #495057;
             color: white;
         }
-
+    
         /* Barra lateral */
         .sidebar {
             width: 200px;
-            background-color: #e0e0e0;
+            background: linear-gradient(180deg, #1c1b1d,#464646,#43ABD3, #3726a7); /* Degradado vertical */
             padding-top: 60px; 
             position: fixed;
             top: 0;
@@ -56,27 +62,39 @@
             flex-direction: column;
             justify-content: space-between;
             z-index: 999;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Sombra para destacar la barra */
         }
+
         .sidebar .nav {
             flex-grow: 1;
             padding: 20px 0;
         }
+
         .sidebar .nav-item {
             margin: 10px 0;
         }
+
         .sidebar .nav-link {
-            color: #000000;
-            padding: 10px;
+            color: white; /* Color de los enlaces */
+            padding: 10px 20px;
             border-radius: 10px;
             text-decoration: none;
-            text-shadow: 1px 1px 2px rgba(43, 70, 97, 0.5);
-            text-align: center;
-        }
-        .sidebar .nav-link:hover {
-            background-color: #9fa0a1;
-            color: #333333;
+            text-align: center; /* Centrar texto */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centrar texto e icono */
         }
 
+        .sidebar .nav-link i {
+            margin-right: 10px; /* Espacio entre el icono y el texto */
+        }
+
+        /* Efecto hover */
+        .sidebar .nav-link:hover {
+            background-color: #62666d;
+            color: #ffffff;
+        }
+    
         /* Contenido principal */
         .content {
             margin-left: 200px;
@@ -118,7 +136,7 @@
                 <a class="nav-link active" href="{% url 'inicio' %}">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">Proyectos</a>
+                <a class="nav-link" href="{% url 'index' %}">Tareas</a>
             </li>
             <div class="flex-grow-1"></div>
             <li class="nav-item">

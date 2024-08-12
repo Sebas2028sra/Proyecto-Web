@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block titulo %}Proyectos{% endblock %}
 
@@ -7,6 +8,20 @@
 
 <!-- CSS inline -->
 <style>
+    /* Ajustes del body para que la imagen de fondo se adapte bien */
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background-image: url("{% static 'imagenes/background index3.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        color: white;
+        padding-top: 60px; /* Ajuste del padding para la barra superior */
+    }
+
+
     .progress {
         height: 20px;
         background-color: #f3f3f3;
@@ -16,7 +31,7 @@
     }
 
     .progress-bar {
-        background-color: #2be025;
+        background-color: #76e4ff;
         height: 100%;
         line-height: 20px;
         color: rgb(0, 0, 0);
@@ -28,13 +43,13 @@
 
 <div class="container">
     <div class="card shadow-sm mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
-            <h4 class="mb-0">Proyectos</h4>
+        <div class="card-header d-flex justify-content-between align-items-center bg-secondary text-white">
+            <h4 class="mb-0">Tareas</h4>
             <div class="d-flex justify-content-center w-100">
-                <a href="{% url 'custom_estado' %}" class="btn btn-outline-light btn-sm me-2">Personalizar Estados</a>
-                <a href="{% url 'custom_prioridad' %}" class="btn btn-outline-light btn-sm">Personalizar Prioridades</a>
+                <a href="{% url 'custom_estado' %}" class="btn btn-light btn-sm me-2">Personalizar Estados</a>
+                <a href="{% url 'custom_prioridad' %}" class="btn btn-light btn-sm">Personalizar Prioridades</a>
             </div>
-            <a href="{% url 'agregar_proyecto' %}" class="btn btn-outline-light btn-sm">Agregar Tarea</a>
+            <a href="{% url 'agregar_proyecto' %}" class="btn btn-success btn-sm">Agregar Tarea</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -66,8 +81,8 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <a href="{% url 'actualizar_proyecto' proyecto.id_proyecto %}" class="btn btn-primary btn-sm me-1">Editar</a>
-                                <a href="{% url 'eliminar_proyecto' proyecto.id_proyecto %}" class="btn btn-danger btn-sm">Eliminar</a>
+                                <a href="{% url 'actualizar_proyecto' proyecto.id_proyecto %}" class="btn btn-outline-primary btn-sm me-1">Editar</a>
+                                <a href="{% url 'eliminar_proyecto' proyecto.id_proyecto %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
                             </td>
                         </tr>
                         {% endfor %}
